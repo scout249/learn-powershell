@@ -2,7 +2,7 @@ $a="https://opendata.mtr.com.hk/data/mtr_lines_fares.csv"
 $b="c:\temp\test1.csv"
 
 Invoke-WebRequest -Uri $a -OutFile $b
-Import-Csv $b | ? {($_.SRC_Station_Name -eq "Central" -and $_.DEST_STATION_NAME -eq "Kowloon Bay")}  
+#Import-Csv $b | ? {($_.SRC_Station_Name -eq "Central" -and $_.DEST_STATION_NAME -eq "Kowloon Bay")}  
 #Import-Csv $b | select SRC_Station_Name -Unique | convertto-csv | clip
 
 
