@@ -144,9 +144,9 @@ foreach ($pokemon in $selected_pokemon) {
 Write-Output "Selected images downloaded to $destination_folder"
 ```
 选择多个项目的步骤：
-运行上述脚本时，会弹出一个 Out-GridView 窗口，显示过滤后的宝可梦列表。
-在 `Out-GridView` 窗口中，按住 CTRL 键。
-使用鼠标点击你想要选择的多个宝可梦条目。
-选择完成后，点击窗口底部的“确定”按钮。
+1. 运行上述脚本时，会弹出一个 Out-GridView 窗口，显示过滤后的宝可梦列表。
+2. 在 `Out-GridView` 窗口中，按住 CTRL 键。
+3. 使用鼠标点击你想要选择的多个宝可梦条目。
+4. 选择完成后，点击窗口底部的“确定”按钮。
 这样，你选择的多个宝可梦的图片将会被下载到指定的文件夹中。
 通过以上步骤，你可以使用 PowerShell 从网上获取 JSON 数据，过滤数据，格式化数据，并下载图片。
