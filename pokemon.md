@@ -65,6 +65,37 @@ image       : @{sprite=https://raw.githubusercontent.com/Purukitto/pokemon-data
 ```
 
 
+在 PowerShell 中，gt、lt 和 contains 是用于比较和过滤数据的运算符：
+
+### gt (Greater Than)
+gt 表示“大于”。它用于比较数值，返回大于指定值的项。例如，过滤出 HP 大于 70 的宝可梦：
+```powershell
+$filtered_pokemon = $data | Where-Object { $_.base.HP -gt 70 }
+$filtered_pokemon
+```
+
+
+### lt (Less Than)
+lt 表示“小于”。它用于比较数值，返回小于指定值的项。例如，过滤出 HP 小于 70 的宝可梦：
+```powershell
+$filtered_pokemon = $data | Where-Object { $_.base.HP -lt 70 }
+$filtered_pokemon
+```
+### contains
+contains 用于检查字符串是否包含指定的子字符串。例如，过滤出英文名字包含 "pika" 的宝可梦：
+```powershell
+$filtered_pokemon = $data | Where-Object { $_.name.english -contains "pika" }
+$filtered_pokemon
+```
+
+### match
+不过，在 PowerShell 中，检查字符串包含子字符串更常用的是 -match 运算符，如提供的示例：
+```powershell
+$filtered_pokemon = $data | Where-Object { $_.name.english -match "pika" }
+$filtered_pokemon
+```
+-match 运算符用于正则表达式匹配，适用于更复杂的字符串匹配需求。
+
 3. 格式化数据
 我们可以使用 Format-Table、Format-List 和 Out-GridView 来格式化和查看数据。
 
