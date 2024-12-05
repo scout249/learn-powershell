@@ -96,16 +96,22 @@ $filtered_pokemon
 ```
 -match 运算符用于正则表达式匹配，适用于更复杂的字符串匹配需求。
 
-3. 格式化数据
+## 3. 格式化数据
 我们可以使用 Format-Table、Format-List 和 Out-GridView 来格式化和查看数据。
 
-使用 Format-Table
+### 使用 Format-Table
+```powershell
 $filtered_pokemon | Format-Table -Property name, base
-使用 Format-List
+```
+### 使用 Format-List
+```powershell
 $filtered_pokemon | Format-List -Property name, base
-使用 Out-GridView
-$filtered_pokemon | Out-GridView
-4. 下载图片
+```
+### 使用 Out-GridView
+```powershell$filtered_pokemon | Out-GridView
+```
+
+## 4. 下载图片
 我们可以下载过滤后的宝可梦的图片到本地目录。例如，下载高分辨率图片到 C:\temp\：
 
 $destination_folder = "C:\temp"
