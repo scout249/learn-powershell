@@ -253,3 +253,42 @@ $data | Select-Object id, name, type, base | ConvertTo-Html -Property id, name, 
 - 使用 `Select-Object` 选择要导出的属性。
 - 使用 `ConvertTo-Html` 将数据转换为 HTML 格式。
 - 使用 `Out-File` 将 HTML 数据保存到指定文件路径。
+
+### 将数据展平并将所有数据作为列导出为 CSV 文件
+要将数据展平并将所有数据作为列导出为 CSV 文件。
+
+```powershell
+$data_json = "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/refs/heads/master/pokedex.json"
+$data = Invoke-RestMethod -Uri $data_json
+
+# 展平数据结构
+$flattened_data = $data | ForEach-Object {
+    [PSCustomObject]@{
+        id          = $_.id
+        english     = $_.name.english
+        japanese    = $_.name.japanese
+        chinese     = $_.name.chinese
+        french      = $_.name.french
+        type        = ($_ | Select-Object -ExpandProperty type) -join ", "
+        HP          = $_.base.HP
+        Attack      = $_.base.Attack
+        Defense     = $_.base.Defense
+        SpAttack    = $_.base."Sp. Attack"
+        SpDefense   = $_.base."Sp. Defense"
+        Speed       = $_.base.Speed
+        species     = $_.species
+        description = $_.description
+        height      = $_.profile.height
+        weight      = $_.profile.weight
+        gender      = $_.profile.gender
+        sprite      = $_.image.sprite
+        thumbnail   = $_.image.thumbnail
+        hires       = $_.image.hires
+    }
+}
+
+# 导出为 CSV 文件
+$flattened_data | Export-Csv -Path "C:\temp\flattened_pokemon_data.csv" -NoTypeInformation
+```
+展平数据结构: 使用 ForEach-Object 遍历每个宝可梦，并创建一个新的对象，其中包含展平后的属性。
+这个脚本会将 JSON 数据展平，并将所有属性作为列导出到 CSV 文件中。
