@@ -5,12 +5,12 @@
 ![Pikachu](https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/025.png)
 
 # Table of Contents
-1. [Example](##1.获取数据 📥)
+1. [Example](##获取数据)
 2. [Example2](#2.过滤数据 🔍)
 3. [Third Example](#third-example)
 4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
 
-## 1.获取数据 📥
+## 获取数据 📥
 
 首先，我们使用 `Invoke-RestMethod` 从网上获取 JSON 数据。以下是一个示例：
 
