@@ -108,7 +108,8 @@ $filtered_pokemon | Format-Table -Property name, base
 $filtered_pokemon | Format-List -Property name, base
 ```
 ### 使用 Out-GridView
-```powershell$filtered_pokemon | Out-GridView
+```powershell
+$filtered_pokemon | Out-GridView
 ```
 
 ## 4. 下载图片
@@ -127,7 +128,8 @@ foreach ($pokemon in $filtered_pokemon) {
 }
 
 Write-Output "Images downloaded to $destination_folder"
-5. 使用 Out-GridView 和 PassThru 下载多张图片
+
+## 5. 使用 Out-GridView 和 PassThru 下载多张图片
 我们可以使用 Out-GridView 的 -PassThru 参数来选择并下载多张图片：
 
 $selected_pokemon = $filtered_pokemon | Out-GridView -PassThru
@@ -140,4 +142,4 @@ foreach ($pokemon in $selected_pokemon) {
 }
 
 Write-Output "Selected images downloaded to $destination_folder"
-通过以上步骤，你可以使用 PowerShell 从网上获取 JSON 数据，过滤数据，格式化数据，并下载图片。希望这个教程对你有帮助！
+通过以上步骤，你可以使用 PowerShell 从网上获取 JSON 数据，过滤数据，格式化数据，并下载图片。
