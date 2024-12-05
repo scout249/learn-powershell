@@ -290,5 +290,5 @@ $flattened_data = $data | ForEach-Object {
 # 导出为 CSV 文件
 $flattened_data | Export-Csv -Path "C:\temp\flattened_pokemon_data.csv" -NoTypeInformation
 ```
-展平数据结构: 使用 ForEach-Object 遍历每个宝可梦，并创建一个新的对象，其中包含展平后的属性。
+展平数据结构: 使用 `ForEach-Object` 遍历每个宝可梦，并创建一个新的对象，其中包含展平后的属性。
 这个脚本会将 JSON 数据展平，并将所有属性作为列导出到 CSV 文件中。
