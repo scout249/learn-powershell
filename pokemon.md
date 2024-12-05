@@ -151,3 +151,58 @@ Write-Output "Selected images downloaded to $destination_folder"
 这样，你选择的多个宝可梦的图片将会被下载到指定的文件夹中。
 
 通过以上步骤，你可以使用 PowerShell 从网上获取 JSON 数据，过滤数据，格式化数据，并下载图片。
+
+## 6. 随机选择两个宝可梦并比较它们的 HP
+
+### 使用 PowerShell 随机选择并比较两个宝可梦的 HP
+
+### 随机选择两个宝可梦
+
+接下来，我们使用 `Get-Random` 随机选择两个宝可梦：
+```powershell
+$random_pokemon = $data | Get-Random -Count 2
+```
+
+### 比较 HP 并输出结果
+```powershell
+$pokemon1 = $random_pokemon[0]
+$pokemon2 = $random_pokemon[1]
+
+$hp1 = $pokemon1.base.HP
+$hp2 = $pokemon2.base.HP
+
+if ($hp1 -gt $hp2) {
+    Write-Output "$($pokemon1.name.chinese) has $hp1 HP, $($pokemon2.name.chinese) has $hp2 HP, $($pokemon1.name.chinese) wins"
+} elseif ($hp1 -lt $hp2) {
+    Write-Output "$($pokemon2.name.chinese) has $hp2 HP, $($pokemon1.name.chinese) has $hp1 HP, $($pokemon2.name.chinese) wins"
+} else {
+    Write-Output "$($pokemon1.name.chinese) and $($pokemon2.name.chinese) both have $hp1 HP, it's a tie"
+}
+```
+
+### 完整脚本
+将以上步骤整合在一起，完整脚本如下：
+```powershell
+$data_json = "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/refs/heads/master/pokedex.json"
+$data = Invoke-RestMethod -Uri $data_json
+
+# 随机选择两个宝可梦
+$random_pokemon = $data | Get-Random -Count 2
+
+$pokemon1 = $random_pokemon[0]
+$pokemon2 = $random_pokemon[1]
+
+$hp1 = $pokemon1.base.HP
+$hp2 = $pokemon2.base.HP
+
+# 比较 HP 并输出结果
+if ($hp1 -gt $hp2) {
+    Write-Output "$($pokemon1.name.chinese) has $hp1 HP, $($pokemon2.name.chinese) has $hp2 HP, $($pokemon1.name.chinese) wins"
+} elseif ($hp1 -lt $hp2) {
+    Write-Output "$($pokemon2.name.chinese) has $hp2 HP, $($pokemon1.name.chinese) has $hp1 HP, $($pokemon2.name.chinese) wins"
+} else {
+    Write-Output "$($pokemon1.name.chinese) and $($pokemon2.name.chinese) both have $hp1 HP, it's a tie"
+}
+```
+
+通过以上步骤，你可以使用 PowerShell 随机选择两个宝可梦，比较它们的 HP，并输出结果。
