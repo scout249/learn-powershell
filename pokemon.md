@@ -5,10 +5,14 @@
 ![Pikachu](https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/025.png)
 
 # Table of Contents
-1. [Example](#1--获取数据)
-2. [Example2](#2.过滤数据 🔍)
-3. [Third Example](#third-example)
-4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
+1. [获取数据](#1--获取数据)
+1. [过滤数据](#2-过滤数据)
+1. [格式化数据](#3--格式化数据)
+1. [下载图片](#4--下载图片)
+1. [使用-out-gridview-和-passthru-下载多张图片](#5-使用-out-gridview-和-passthru-下载多张图片)
+1. [随机选择两个宝可梦并比较它们的-hp](#6-随机选择两个宝可梦并比较它们的-hp)
+1. 1. [挑战问题](#挑战问题)
+1. [导出文件](#7--导出文件)
 
 ## 1. 📥 获取数据
 
