@@ -8,7 +8,7 @@
 
 首先，我们使用 `Invoke-RestMethod` 从网上获取 JSON 数据。以下是一个示例：
 
-`$data | Format-Table` 是 PowerShell 中用于格式化和显示数据的一种方式。以下是对它的中文解释：
+`$data | Format-Table` 是 PowerShell 中用于格式化和显示数据的一种方式。
 `$data | Format-Table` 命令将 `$data` 中的数据以表格形式显示出来。它会自动调整列宽，使数据更易于阅读和理解。
 
 ```powershell
