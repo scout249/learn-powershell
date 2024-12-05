@@ -5,12 +5,12 @@
 ![Pikachu](https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/025.png)
 
 # Table of Contents
-1. [Example](#1.📥获取数据)
-2. [Example2](#2.🔍过滤数据)
+1. [Example](#1.获取数据 📥)
+2. [Example2](#2.过滤数据 🔍)
 3. [Third Example](#third-example)
 4. [Fourth Example](#fourth-examplehttpwwwfourthexamplecom)
 
-## 1.📥获取数据
+## 1.获取数据 📥
 
 首先，我们使用 `Invoke-RestMethod` 从网上获取 JSON 数据。以下是一个示例：
 
@@ -43,7 +43,7 @@ $data | Format-Table -Property name, base
 
 
 
-## 2.🔍过滤数据
+## 2.过滤数据 🔍
 接下来，我们可以根据特定条件过滤数据。例如，过滤出英文名字包含 "pika" 的宝可梦：
 
 ```powershell
