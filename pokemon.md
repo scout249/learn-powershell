@@ -132,9 +132,6 @@ $filtered_pokemon | Format-List -Property name, base
 ```powershell
 $filtered_pokemon | Out-GridView
 ```
-
-使用 `Out-GridView` 的功能
-
 **显示数据:** `Out-GridView` 将数据以表格形式显示在一个独立的窗口中，方便用户查看和分析。
 
 **排序:** 你可以通过点击列标题来对数据进行升序或降序排序。
