@@ -2,6 +2,8 @@
 
 # 使用 PowerShell 的 Invoke-RestMethod 获取 JSON 数据教程
 
+![Pikachu](https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/025.png)
+
 ## 1. 📥 获取数据
 
 首先，我们使用 `Invoke-RestMethod` 从网上获取 JSON 数据。以下是一个示例：
