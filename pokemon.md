@@ -217,4 +217,4 @@ if ($hp1 -gt $hp2) {
 $pokemon1 = $random_pokemon[0]
 $pokemon2 = $random_pokemon[1]
 ```
-**你的任务:** 将 $random_pokemon[0] 替换为你选择的宝可梦的数据。你可以从 JSON 数据中找到皮卡丘或其他任何宝可梦的数据，并将其分配给 `$pokemon1`。
+**你的任务:** 将 `$random_pokemon[0]` 替换为你选择的宝可梦的数据。你可以从 JSON 数据中找到皮卡丘或其他任何宝可梦的数据，并将其分配给 `$pokemon1`。
