@@ -213,7 +213,8 @@ if ($hp1 -gt $hp2) {
 🎉 **挑战:** 修改脚本，将 `$pokemon1` 替换为你选择的宝可梦。例如，如果你想比较皮卡丘和一个随机选择的宝可梦，请将 `$pokemon1` 替换为皮卡丘的数据。
 
 以下是脚本中的原始部分供参考：
-
+```powershell
 $pokemon1 = $random_pokemon[0]
 $pokemon2 = $random_pokemon[1]
+```
 **你的任务:** 将 $random_pokemon[0] 替换为你选择的宝可梦的数据。你可以从 JSON 数据中找到皮卡丘或其他任何宝可梦的数据，并将其分配给 `$pokemon1`。
