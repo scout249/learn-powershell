@@ -35,10 +35,36 @@ $data | Format-Table -Property name, base
 
 
 
-2. 过滤数据
+## 2. 过滤数据
 接下来，我们可以根据特定条件过滤数据。例如，过滤出英文名字包含 "pika" 的宝可梦：
 
+```powershell
 $filtered_pokemon = $data | Where-Object { $_.name.english -match "pika" }
+$filtered_pokemon
+```
+
+```
+id          : 25
+name        : @{english=Pikachu; japanese=ピカチュウ; chinese=皮卡丘; french=Pikachu}
+type        : {Electric}
+base        : @{HP=35; Attack=55; Defense=40; Sp. Attack=50; Sp. Defense=50; 
+              Speed=90}
+species     : Mouse Pokémon
+description : While sleeping, it generates electricity in the sacs in its 
+              cheeks. If it’s not getting enough sleep, it will be able to use 
+              only weak electricity.
+evolution   : @{prev=System.Object[]; next=System.Object[]}
+profile     : @{height=0.4 m; weight=6 kg; egg=System.Object[]; 
+              ability=System.Object[]; gender=50:50}
+image       : @{sprite=https://raw.githubusercontent.com/Purukitto/pokemon-data
+              .json/master/images/pokedex/sprites/025.png; thumbnail=https://ra
+              w.githubusercontent.com/Purukitto/pokemon-data.json/master/images
+              /pokedex/thumbnails/025.png; hires=https://raw.githubusercontent.
+              com/Purukitto/pokemon-data.json/master/images/pokedex/hires/025.p
+              ng}
+```
+
+
 3. 格式化数据
 我们可以使用 Format-Table、Format-List 和 Out-GridView 来格式化和查看数据。
 
