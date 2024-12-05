@@ -220,3 +220,36 @@ $pokemon1 = $random_pokemon[0]
 $pokemon2 = $random_pokemon[1]
 ```
 **你的任务:** 将 `$random_pokemon[0]` 替换为你选择的宝可梦的数据。你可以从 JSON 数据中找到皮卡丘或其他任何宝可梦的数据，并将其分配给 `$pokemon1`。
+
+## 7. 🗎 导出文件
+
+### 导出为 CSV 文件
+你可以使用 `Export-Csv` cmdlet 将数据导出为 CSV 文件。
+```powershell
+$data_json = "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/refs/heads/master/pokedex.json"
+$data = Invoke-RestMethod -Uri $data_json
+
+# 导出为 CSV 文件
+$data | Select-Object id, name, type, base | Export-Csv -Path "C:\temp\pokemon_data.csv" -NoTypeInformation
+```
+
+### 导出为 HTML 文件
+你可以使用 `ConvertTo-Html` cmdlet 将数据转换为 HTML 格式，并使用 `Out-File` 将其保存为 HTML 文件。
+```powershell
+$data_json = "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/refs/heads/master/pokedex.json"
+$data = Invoke-RestMethod -Uri $data_json
+
+# 导出为 HTML 文件
+$data | Select-Object id, name, type, base | ConvertTo-Html -Property id, name, type, base | Out-File -FilePath "C:\temp\pokemon_data.html"
+```
+
+### 解释
+1. 导出为 CSV 文件:
+
+- 使用 `Select-Object` 选择要导出的属性。
+- 使用 `Export-Csv` 将数据导出为 CSV 文件，并指定文件路径。
+2 . 导出为 HTML 文件:
+
+- 使用 `Select-Object` 选择要导出的属性。
+- 使用 `ConvertTo-Html` 将数据转换为 HTML 格式。
+- 使用 `Out-File` 将 HTML 数据保存到指定文件路径。
