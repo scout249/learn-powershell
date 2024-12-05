@@ -244,11 +244,11 @@ $data | Select-Object id, name, type, base | ConvertTo-Html -Property id, name, 
 ```
 
 ### 解释
-1. 导出为 CSV 文件:
+#### 导出为 CSV 文件:
 
 - 使用 `Select-Object` 选择要导出的属性。
 - 使用 `Export-Csv` 将数据导出为 CSV 文件，并指定文件路径。
-2 . 导出为 HTML 文件:
+#### 导出为 HTML 文件:
 
 - 使用 `Select-Object` 选择要导出的属性。
 - 使用 `ConvertTo-Html` 将数据转换为 HTML 格式。
