@@ -2,7 +2,7 @@
 
 # 使用 PowerShell 的 Invoke-RestMethod 获取 JSON 数据教程
 
-## 1. 获取数据
+## 1. 📥 获取数据
 
 首先，我们使用 `Invoke-RestMethod` 从网上获取 JSON 数据。以下是一个示例：
 
@@ -35,7 +35,7 @@ $data | Format-Table -Property name, base
 
 
 
-## 2. 过滤数据
+## 2. 🔍 过滤数据
 接下来，我们可以根据特定条件过滤数据。例如，过滤出英文名字包含 "pika" 的宝可梦：
 
 ```powershell
@@ -96,7 +96,7 @@ $filtered_pokemon
 ```
 -match 运算符用于正则表达式匹配，适用于更复杂的字符串匹配需求。
 
-## 3. 格式化数据
+## 3. 📊 格式化数据
 我们可以使用 Format-Table、Format-List 和 Out-GridView 来格式化和查看数据。
 
 ### 使用 Format-Table
@@ -112,7 +112,7 @@ $filtered_pokemon | Format-List -Property name, base
 $filtered_pokemon | Out-GridView
 ```
 
-## 4. 下载图片
+## 4. 📸 下载图片
 我们可以下载过滤后的宝可梦的图片到本地目录。例如，下载高分辨率图片到 C:\temp\：
 ```powershell
 $destination_folder = "C:\temp"
