@@ -114,7 +114,7 @@ $filtered_pokemon | Out-GridView
 
 ## 4. 下载图片
 我们可以下载过滤后的宝可梦的图片到本地目录。例如，下载高分辨率图片到 C:\temp\：
-
+```powershell
 $destination_folder = "C:\temp"
 if (-not (Test-Path -Path $destination_folder)) {
     New-Item -ItemType Directory -Path $destination_folder
@@ -128,10 +128,10 @@ foreach ($pokemon in $filtered_pokemon) {
 }
 
 Write-Output "Images downloaded to $destination_folder"
-
+```
 ## 5. 使用 Out-GridView 和 PassThru 下载多张图片
 我们可以使用 Out-GridView 的 -PassThru 参数来选择并下载多张图片：
-
+```powershell
 $selected_pokemon = $filtered_pokemon | Out-GridView -PassThru
 
 foreach ($pokemon in $selected_pokemon) {
@@ -142,4 +142,5 @@ foreach ($pokemon in $selected_pokemon) {
 }
 
 Write-Output "Selected images downloaded to $destination_folder"
+```
 通过以上步骤，你可以使用 PowerShell 从网上获取 JSON 数据，过滤数据，格式化数据，并下载图片。
