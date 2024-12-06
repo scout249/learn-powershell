@@ -316,3 +316,134 @@ $flattened_data | Export-Csv -Path "C:\temp\flattened_pokemon_data.csv" -NoTypeI
 ```
 展平数据结构: 使用 `ForEach-Object` 遍历每个宝可梦，并创建一个新的对象，其中包含展平后的属性。
 这个脚本会将 JSON 数据展平，并将所有属性作为列导出到 CSV 文件中。
+
+## 8. 📥 保存宝可梦信息到 TXT
+如何使用PowerShell脚本从网上获取宝可梦数据，选择一个宝可梦，并将用户的名字和选择的宝可梦信息保存到文本文件中。文本文件将以UTF-8编码保存，以确保正确显示中文字符。
+
+### 下载宝可梦数据
+首先，我们从指定的URL下载宝可梦数据，并将其存储在变量 `$data` 中。
+```powershell
+$data_json = "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/refs/heads/master/pokedex.json"
+$data = Invoke-RestMethod -Uri $data_json
+```
+
+### 扁平化数据
+接下来，我们将数据扁平化，以便于选择和处理。我们使用 `ForEach-Object` 循环遍历每个宝可梦，并创建一个自定义对象来存储相关信息。
+```powershell
+$flattened_data = $data | ForEach-Object {
+    [PSCustomObject]@{
+        id          = $_.id
+        english     = $_.name.english
+        japanese    = $_.name.japanese
+        chinese     = $_.name.chinese
+        french      = $_.name.french
+        type        = ($_ | Select-Object -ExpandProperty type) -join ", "
+        HP          = $_.base.HP
+        Attack      = $_.base.Attack
+        Defense     = $_.base.Defense
+        SpAttack    = $_.base."Sp. Attack"
+        SpDefense   = $_.base."Sp. Defense"
+        Speed       = $_.base.Speed
+        species     = $_.species
+        description = $_.description
+        height      = $_.profile.height
+        weight      = $_.profile.weight
+        gender      = $_.profile.gender
+        sprite      = $_.image.sprite
+        thumbnail   = $_.image.thumbnail
+        hires       = $_.image.hires
+    }
+}
+```
+
+### 选择一个宝可梦
+使用 `Out-GridView` 命令打开一个图形界面，让用户选择一个宝可梦。选择的宝可梦信息将存储在变量 `$selected_pokemon` 中。
+```powershell
+# Powershell 5
+$selected_pokemon = $flattened_data | Select-Object english, chinese, HP | Out-GridView -Title "选择一个宝可梦" -PassThru
+
+# Powershell 7
+$selected_pokemon = $flattened_data | Select-Object english, chinese, HP | Out-GridView -Title "选择一个宝可梦" -PassThru -OutputMode Single
+```
+
+### 询问用户的名字
+使用 `Read-Host` 命令询问用户的名字，并将其存储在变量 `$user_name` 中。
+```powershell
+$user_name = Read-Host "请输入你的名字"
+```
+
+### 获取当前日期时间
+使用 `Get-Date` 命令获取当前的日期和时间，并格式化为 `yyyy-MM-dd HH:mm:ss` 格式。
+```powershell
+$current_datetime = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+```
+
+### 构建输出字符串
+构建一个包含当前日期时间、用户名字、选择的宝可梦英文名、中文名和HP值的输出字符串。
+```powershll
+$output = "$current_datetime, Your name is $user_name, Your favorite pokemon is $($selected_pokemon.english), $($selected_pokemon.chinese), the hp is $($selected_pokemon.HP)"
+```
+
+### 以追加模式保存到文本文件
+```powershell
+$output_file = "C:\temp\favorite_pokemon.txt"
+Add-Content -Path $output_file -Value $output -Encoding utf8
+```
+
+### 输出结果
+最后，输出一条消息，告知用户信息已保存。
+```powershell
+Write-Output "信息已保存到 $output_file"
+```
+
+### 完整代码
+```powershell
+# 下载宝可梦数据
+$data_json = "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/refs/heads/master/pokedex.json"
+$data = Invoke-RestMethod -Uri $data_json
+
+# 扁平化数据
+$flattened_data = $data | ForEach-Object {
+    [PSCustomObject]@{
+        id          = $_.id
+        english     = $_.name.english
+        japanese    = $_.name.japanese
+        chinese     = $_.name.chinese
+        french      = $_.name.french
+        type        = ($_ | Select-Object -ExpandProperty type) -join ", "
+        HP          = $_.base.HP
+        Attack      = $_.base.Attack
+        Defense     = $_.base.Defense
+        SpAttack    = $_.base."Sp. Attack"
+        SpDefense   = $_.base."Sp. Defense"
+        Speed       = $_.base.Speed
+        species     = $_.species
+        description = $_.description
+        height      = $_.profile.height
+        weight      = $_.profile.weight
+        gender      = $_.profile.gender
+        sprite      = $_.image.sprite
+        thumbnail   = $_.image.thumbnail
+        hires       = $_.image.hires
+    }
+}
+
+# 选择一个宝可梦
+$selected_pokemon = $flattened_data | Select-Object english, chinese, HP | Out-GridView -Title "选择一个宝可梦" -PassThru
+
+# 询问用户的名字
+$user_name = Read-Host "请输入你的名字"
+
+# 获取当前日期时间
+$current_datetime = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+
+# 构建输出字符串
+$output = "$current_datetime, Your name is $user_name, Your favorite pokemon is $($selected_pokemon.english), $($selected_pokemon.chinese), the hp is $($selected_pokemon.HP)"
+
+# 以追加模式保存到文本文件，指定UTF-8编码
+$output_file = "C:\temp\favorite_pokemon.txt"
+Add-Content -Path $output_file -Value $output -Encoding utf8
+
+# 输出结果
+Write-Output "信息已保存到 $output_file"
+```
