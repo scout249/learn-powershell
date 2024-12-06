@@ -363,9 +363,6 @@ $flattened_data = $data | ForEach-Object {
 ```powershell
 # Powershell 5
 $selected_pokemon = $flattened_data | Select-Object english, chinese, HP | Out-GridView -Title "选择一个宝可梦" -PassThru
-
-# Powershell 7
-$selected_pokemon = $flattened_data | Select-Object english, chinese, HP | Out-GridView -Title "选择一个宝可梦" -PassThru -OutputMode Single
 ```
 
 ### 询问用户的名字
