@@ -29,12 +29,10 @@
 
 PowerShell ISE（集成脚本环境）是一个图形化的脚本编辑器，提供了编写、测试和调试PowerShell脚本的功能。以下是一个教程，指导你如何使用PowerShell ISE编写和运行脚本。
 
-步骤
-1. 打开PowerShell ISE
-  1. 按 Win + R 打开运行对话框。
-  1. 输入 powershell_ise 并按 Enter。
-1. 运行脚本
-  1. 在PowerShell ISE中，点击脚本窗格上方的绿色“运行脚本”按钮，或者按 F5 键。脚本将运行，并在控制台窗格中显示输出。
+###  打开PowerShell ISE 步骤
+1. 按 `Win + R` 打开运行对话框。
+1. 输入 `powershell_ise` 并按 **Enter**。
+1. 在PowerShell ISE中，点击脚本窗格上方的绿色“运行脚本”按钮，或者按 **F5** 键。脚本将运行，并在控制台窗格中显示输出。
 
 首先，我们使用 `Invoke-RestMethod` 从网上获取 JSON 数据。以下是一个示例：
 
